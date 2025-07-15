@@ -5,17 +5,18 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Product product = new Product();
 
         System.out.println("Enter product details:");
         System.out.print("Enter the product name: ");
-        product.name = sc.nextLine();
-        System.out.print("Product quantity in stock: ");
-        product.quantity = sc.nextInt();
+        String name = sc.nextLine();
         System.out.print("Enter the product price: ");
-        product.price = sc.nextDouble();
+        double price = sc.nextDouble();
+        System.out.print("Product quantity in stock: ");
+        int quantity = sc.nextInt();
+
 
         System.out.println("=== PRODUCT DATA ===");
+        Product product = new Product(name, price, quantity);
         System.out.println(product);
 
         System.out.print("How many products will be added to stock? ");
