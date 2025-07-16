@@ -1,4 +1,4 @@
-package entits;
+package Entits;
 
 public class Product {
 
@@ -6,14 +6,12 @@ public class Product {
     public double price;
     public int quantity;
 
-    public Product (String name, double price, int quantity){
+    public Product(String name, double price, int quantity) {
         // o this.*** está referenciando os atributos do objeto atual da classe Product,
         // para diferenciá-los dos parâmetros com o mesmo nome
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-
-
     }
 
     public double totalValueInStock() {
@@ -29,7 +27,6 @@ public class Product {
     }
 
     public String toString() {
-        return name + ", R$ " + String.format("%.2f", price) + ", " + quantity
-                + " units, Total: R$ " + String.format("%.2f", totalValueInStock());
+        return  " Produto: " + name + " | Valor: R$ " + String.format("%.2f", price) + " | Estoque: " + quantity;
     }
 }

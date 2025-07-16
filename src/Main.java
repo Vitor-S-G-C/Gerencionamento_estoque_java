@@ -1,36 +1,64 @@
-import entits.Product;
+import Entits.Client;
+import Entits.Product;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter product details:");
-        System.out.print("Enter the product name: ");
-        String name = sc.nextLine();
-        System.out.print("Enter the product price: ");
+        System.out.println("Para acessar o estoque Faça o cadastro");
+        System.out.println("Digite seu nome");
+        String nomecliente = sc.nextLine();
+        // ⬆️ Crie um nome de usuario
+        System.out.println("Digite seu Email");
+        String emailcliente = sc.nextLine();
+        // ⬆️ Coloque um email de acesso
+        System.out.println("Crie uma senha");
+        String senhacliente = sc.nextLine();
+        // ⬆️ Crie uma senha
+        Client c = new Client(nomecliente, emailcliente, senhacliente);
+
+        System.out.println("\nDigite sua senha para confirmar:");
+        String tentativa = sc.next();
+        // ⬆️ Sistema de validação simples de senha
+
+        if (tentativa == c.getPasswordClient()) {
+            System.out.println("Acesso autorizado!");
+            // segue o código
+        } else {
+            System.out.println("Senha incorreta. Encerrando programa.");
+            return;
+        }
+        System.out.println(c);
+        // ⬆️ Informações de cadastro
+
+        System.out.println("Digite os dados do produto:");
+
+        System.out.print("Nome do produto: ");
+        String name = sc.next();
+        // ⬆️ nome
+
+        System.out.print("Preço do produto: ");
         double price = sc.nextDouble();
-        System.out.print("Product quantity in stock: ");
+        //⬆️ preço
+        System.out.print("Quantidade em estoque: ");
         int quantity = sc.nextInt();
-
-
-        System.out.println("=== PRODUCT DATA ===");
-        Product product = new Product(name, price, quantity);
-        System.out.println(product);
-
-        System.out.print("How many products will be added to stock? ");
+        //⬆️ quantidade
+        System.out.println("=== DADOS DO PRODUTO ===");
+        Product p = new Product(name, price, quantity);
+        System.out.println(p);
+        System.out.print("Quantos produtos serão adicionados ao estoque? ");
         int addQuantity = sc.nextInt();
-        product.addProduct(addQuantity);
-        System.out.println("=== UPDATED PRODUCT DATA ===");
-        System.out.println(product);
-
-        System.out.print("How many products were sold? ");
+        p.addProduct(addQuantity);
+        //⬆️ Adicionando produtos ao estoque
+        System.out.println("=== DADOS ATUALIZADOS DO PRODUTO ===");
+        System.out.print("Quantos produtos foram vendidos? ");
         int removeQuantity = sc.nextInt();
-        product.removeProduct(removeQuantity);
-        System.out.println("=== UPDATED PRODUCT DATA ===");
-        System.out.println(product);
-
+        p.removeProduct(removeQuantity);
+        //⬆️ Removendo produtos do estoque
+        System.out.println("=== "+ c.getNameClient()+" ATUALIZOU DADOS DO PRODUTO ===");
+        System.out.println(p);
+        String res = sc.next();
         sc.close();
     }
 }
